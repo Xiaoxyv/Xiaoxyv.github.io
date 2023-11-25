@@ -1,10 +1,12 @@
 body {
-    background-color: #f1f1f1;
+    /* background-color: rgb(55, 55, 55); */
     margin: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: sans-serif, "Helvetica Neue", Helvetica, Arial;
 }
 .container { 
-    margin: 50px auto 40px auto; 
+    margin: 50px auto 40px auto;
+    padding: 60px; 
+    background-color: #f1f1f1aa;
     width: 600px; 
     text-align: center; 
 }
