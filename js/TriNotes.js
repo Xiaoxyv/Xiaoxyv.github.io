@@ -7,7 +7,7 @@
 
 function setSeed(){
     var userSeed = document.getElementById("seed").value;
-    docCookies.setItem("usrSeed",userSeed,Infinity,"/","xiaoxyv.github.io",false);
+    docCookies.setItem("usrSeed",userSeed,Infinity,"/","xiaoxyv.github.io",true);
     alert(docCookies.getItem("usrSeed"));
 }
 
