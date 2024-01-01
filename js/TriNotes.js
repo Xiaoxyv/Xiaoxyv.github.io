@@ -9,7 +9,7 @@ function setSeed(){
     var userSeed = document.getElementById("seed").value;
     docCookies.removeItem("usrSeed","/","xiaoxyv.github.io");
     docCookies.setItem("usrSeed",userSeed,Infinity,"/","xiaoxyv.github.io",true);
-    alert("Cookie已保存种子，重置请清除浏览器缓存或点击页面重置按钮。\n",docCookies.getItem("usrSeed"));
+    alert("Cookie已保存种子",docCookies.getItem("usrSeed"),"重置请清除浏览器缓存或点击页面重置按钮。");
 }
 
 
