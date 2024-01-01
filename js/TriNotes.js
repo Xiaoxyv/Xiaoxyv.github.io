@@ -7,11 +7,8 @@
 
 function setSeed(){
     var userSeed = document.getElementById("seed").value;
-    docCookies.setItem("usrSeed",userSeed,Infinity,null,null,false);
+    docCookies.setItem("usrSeed",userSeed,Infinity,"/","xiaoxyv.github.io",false);
     alert(docCookies.getItem("userSeed"));
-    // var cookieStr =  "Seed="+userSeed+";path=/;";
-    // document.cookie = cookieStr;
-    // alert(cookieStr);
 }
 
 
