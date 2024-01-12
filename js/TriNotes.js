@@ -5,11 +5,31 @@
 // 获取名为"myCookie"的cookie的值
 // var myCookie = document.cookie.split(";")[0].split("=")[1];
 
+function triLoad(){
+  var usrSeed = docCookies.getItem("usrSeed");
+  if (usrSeed == null) {
+    document.getElementById("noSeed").setAttribute("style","display: inline;");
+  } else {
+    document.getElementById("withSeed").setAttribute("style","display: inline;");
+    document.getElementById("SeedName").innerHTML = usrSeed;
+  }
+}
+
 function setSeed(){
-    var userSeed = document.getElementById("seed").value;
-    docCookies.removeItem("usrSeed","/","xiaoxyv.github.io");
-    docCookies.setItem("usrSeed",userSeed,Infinity,"/","xiaoxyv.github.io",true);
-    alert("Cookie已保存种子",docCookies.getItem("usrSeed"),"重置请清除浏览器缓存或点击页面重置按钮。");
+  alert("setSeed")
+  document.getElementById("noSeed").setAttribute("style","display: none;");
+  document.getElementById("withSeed").setAttribute("style","display: inline;");
+  var userSeed = document.getElementById("seed").value;
+  document.getElementById("SeedName").innerHTML = userSeed;
+  docCookies.setItem("usrSeed",userSeed,Infinity,"/","",true);
+  // alert("Cookie已保存种子，重置请清除浏览器缓存或点击页面重置按钮。");
+}
+
+function resetSeed(){
+  alert("resetSeed")
+  document.getElementById("noSeed").setAttribute("style","display: inline;");
+  document.getElementById("withSeed").setAttribute("style","display: none;");
+  docCookies.removeItem("usrSeed","/","");
 }
 
 
