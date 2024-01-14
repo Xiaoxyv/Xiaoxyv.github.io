@@ -1,10 +1,3 @@
-// 设置名为"myCookie"的cookie，值为"Hello World!"，有效期为一小时
-// document.cookie = "myCookie=Hello World!; path=/";
-// 获取名为"myCookie"的cookie的值
-// var x = document.cookie;
-// 获取名为"myCookie"的cookie的值
-// var myCookie = document.cookie.split(";")[0].split("=")[1];
-
 function triLoad(){
   var usrSeed = docCookies.getItem("usrSeed");
   if (usrSeed == null) {
@@ -33,6 +26,92 @@ function resetSeed(){
 }
 
 
+function generate(){
+  var usrSeed = document.getElementById("SeedName").innerHTML;
+  const date = new Date();
+  var Y = date.getFullYear().toString().slice(-2);
+  var M = (date.getMonth() + 1).toString();   if(M.length==1)M="0"+M;
+  var D = date.getDate().toString();   if(D.length==1)D="0"+D;
+  var appendTimeTag = usrSeed+Y+M+D;
+  var rng = new xRNG(appendTimeTag);
+  rng.init();
+  let note24 = ["c","c#","d","d#","e","f","f#","g","g#","a","a#","b",
+                "C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+  document.getElementById("TN-a").innerHTML = note24[Math.floor(rng.random()*24)];
+  document.getElementById("TN-b").innerHTML = note24[Math.floor(rng.random()*24)];
+  document.getElementById("TN-c").innerHTML = note24[Math.floor(rng.random()*24)];
+}
+
+
+// 仅供测试
+var testrng = new xRNG("appendTimeTag");
+function test(){
+  let note24 = ["c","c#","d","d#","e","f","f#","g","g#","a","a#","b",
+                "C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+  if (document.getElementById("test").innerHTML == "-")
+    testrng.init();
+  document.getElementById("test").innerHTML = note24[Math.floor(testrng.random()*24)];
+}
+
+/*\
+|*|
+|*|  :: xRNG(seed) ::
+|*|
+|*|  generate random number by seed(str), p=97, q=91.
+|*|
+|*|  Syntaxes:
+|*|  
+|*|  * var rng = xRNG(seed);
+|*|  * xRNG.init();
+|*|  * var rnum = xRNG.random();
+\*/
+
+function Au8(str){
+  const encoder = new TextEncoder();
+  const utf8Array = encoder.encode(str);
+  return Array.from(utf8Array);
+}
+
+function Sum(Array){
+  let i = 0;
+  var s = 0;
+  while(i<Array.length){
+    s += Number(Array[i]);
+    i++;
+  }
+  return s;
+}
+
+function xRNG(seed){
+  this.arr = Au8(seed);
+  this.base = Sum(this.arr)/1000;
+  this.p = 97;
+  this.q = 91;
+  this.x = 0;
+}
+
+xRNG.prototype.init = function(){
+  let x = this.base;
+  let i = 0;
+  let bias = 0;
+  let p = this.p;
+  let q = this.q;
+  while(i<this.arr.length){
+    bias = this.arr.indexOf(i);
+    x = (x*1000+bias)*p/q;
+    x = x-Math.floor(x);
+    i++;
+  }
+  this.x = x;
+}
+
+xRNG.prototype.random = function(){
+  x = this.x;
+  x = x*1000*this.p/this.q;
+  x = x-Math.floor(x);
+  this.x = x;
+  return x;
+}
 
 /*\
 |*|
