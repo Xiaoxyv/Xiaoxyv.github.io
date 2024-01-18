@@ -19,12 +19,6 @@ function updateHr() {
     document.getElementById('Hr').innerText = timeString;
 }
 function init(){
-    const now = new Date();
-    var day = String(now.getDate()).padStart(2, '0');
-    var month = String(now.getMonth()+1).padStart(2, '0');
-    var year = String(now.getUTCFullYear());
-    var dateString = year+"年"+month+"月"+day+"日";
-    document.getElementById('date').innerText = dateString;
     updateMs();
     updateSn();
     updateMn();
