@@ -14,12 +14,11 @@ function setInfo() {
     document.getElementById('name').innerText = name;
     document.getElementById('TjuID').innerText = TjuID;
     document.getElementById('TjuTp').innerText = TjuTp;
-    docCookies.setItem("name", name, Infinity, "/", "", true);
-    docCookies.setItem("TjuID", TjuID, Infinity, "/", "", true);
-    docCookies.setItem("TjuTp", TjuTp, Infinity, "/", "", true);
+    docCookies.setItem("name", name, Infinity, "/TJU", "", true);
+    docCookies.setItem("TjuID", TjuID, Infinity, "/TJU", "", true);
+    docCookies.setItem("TjuTp", TjuTp, Infinity, "/TJU", "", true);
     alert("Cookie已保存信息，重置请清除浏览器缓存。");
-    docCookies.setItem("usrinfo", true, Infinity, "/", "", true);
-    docCookies.setItem("where", 1, Infinity, "/", "", true);
+    docCookies.setItem("usrinfo", true, Infinity, "/TJU", "", true);
 }
 
 function getInfo() {
@@ -31,36 +30,14 @@ function getInfo() {
     document.getElementById('TjuTp').innerText = TjuTp;
 }
 
+let where = 1;
+
 function change() {
-    var where = docCookies.getItem("where");
-    switch (where) {
-        case null:
-            where = 1;
-            docCookies.setItem("where", where, Infinity, "/", "", true);
-            break;
-        case 1:
-            where = 2;
-            docCookies.removeItem("where","/","");
-            docCookies.setItem("where", where, Infinity, "/", "", true);
-            break;
-        case 2:
-            where = 3;
-            docCookies.removeItem("where","/","");
-            docCookies.setItem("where", where, Infinity, "/", "", true);
-            break;
-        case 3:
-            where = 4;
-            docCookies.removeItem("where","/","");
-            docCookies.setItem("where", where, Infinity, "/", "", true);
-            break;
-        case 4:
-            where = 1;
-            docCookies.removeItem("where","/","");
-            docCookies.setItem("where", where, Infinity, "/", "", true);
-            break;
-        default:
-            docCookies.removeItem("where","/","");
-            break;
+    if (where < 8) {
+        where += 1;
+    }
+    else {
+        where = 1;
     }
     showWhere(where);
 }
@@ -77,6 +54,18 @@ function showWhere(where) {
             break;
         case 4:
             document.getElementById('where').innerText = "欢迎通过卫津路东门出口。";
+            break;
+        case 5:
+            document.getElementById('where').innerText = "欢迎通过卫津路西门入口。";
+            break;
+        case 6:
+            document.getElementById('where').innerText = "欢迎通过铭德道入口。";
+            break;
+        case 7:
+            document.getElementById('where').innerText = "欢迎通过卫津路北门入口。";
+            break;
+        case 8:
+            document.getElementById('where').innerText = "欢迎通过卫津路东门入口。";
             break;
         default:
             break;
