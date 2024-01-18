@@ -19,6 +19,7 @@ function setInfo() {
     docCookies.setItem("TjuTp", TjuTp, Infinity, "/", "", true);
     alert("Cookie已保存信息，重置请清除浏览器缓存。");
     docCookies.setItem("usrinfo", true, Infinity, "/", "", true);
+    docCookies.setItem("where", 1, Infinity, "/", "", true);
 }
 
 function getInfo() {
