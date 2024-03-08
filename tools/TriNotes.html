@@ -1,13 +1,15 @@
-<!DOCTYPE html>  
-<html>  
-<head>  
-  <title>TriNotes</title>  
-  <link rel="stylesheet" type="text/css" href="../ccs/TriNotes.css">  
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TriNotes</title>
+  <link rel="stylesheet" type="text/css" href="../ccs/TriNotes.css">
   <script src="../js/TriNotes.js"></script>
-</head>  
-<body onload="triLoad()">  
-  <!-- 页面内容 --> 
-  <div id="noSeed" style="display: none;" >
+</head>
+
+<body onload="triLoad()">
+  <!-- 页面内容 -->
+  <div id="noSeed" style="display: none;">
     <div class="centerBar">
       <div class="centerInput">
         <div class="ipHead">
@@ -19,20 +21,49 @@
     </div>
   </div>
   <div id="withSeed" style="display: none;">
-    <div id="mainInfos" style="color: azure;">
-      <h1>已有种子</h1>
-      <p id="SeedName"></p>
-      <h1>今日份灵感~</h1>
-      <p id="TN-a">a</p>
-      <p id="TN-b">b</p>
-      <p id="TN-c">c</p>
-      <p id="test">-</p>
-      <h1>历史记录</h1>
-      <div id="historyNotes"></div>
+    <div id="mainInfos" style="color: var(--cb6); height: 95vh; min-width: 900px;">
+      <div class="mianFuncs">
+        <div class="seedBlock">
+          <h1 style="display: inline-block; width: 30%;">已有种子:</h1>
+          <p style="display: inline-block; width: 30%; font-size: 24px; font-weight: bold;" id="SeedName"></p>
+          <button type="button" class="ipBotton" onclick="resetSeed()" style="display: inline-block; width: 37%; height: auto; font-size: 32px; padding: 6px;">重置</button>
+        </div>
+        <div class="notesBlock" onclick="generate()">
+          <h1>今日份灵感~</h1>
+          <div style="font-size: 24px; margin-top: 20%; margin-bottom: 20%;">
+            <div id="TN-a" class="notesBox">1</div>
+            <div id="TN-b" class="notesBox">2</div>
+            <div id="TN-c" class="notesBox">3</div>
+          </div>
+        </div>
+        <!-- <p id="test">-</p> -->
+        <button type="button" class="ipBotton" onclick="recordToday()" style="height: auto; font-size: 32px; padding: 6px;">记录</button>
+      </div>
+      <div class="otherFuncs">
+        <h2>查询</h2>
+        <div style="height: 60px;">
+          <input type="text" id="queryText" value="Xiaoxyv240308" class="ipText" style="display: inline; width: 60%;  font-size: 16px; height: inherit;">
+          <button type="button" class="ipBotton" onclick="query()" style="display: inline; width: 35%; font-size: 24px; height: inherit; padding: 6px;">确认</button>
+        </div>
+        <div id="queryResult" style="height: 108px;">
+          <h3>结果：</h3>
+          <div style="display: inline; font-size: 16px; height: auto;">
+            <div id="q-a" class="notesBox">-</div>
+            <div id="q-b" class="notesBox">-</div>
+            <div id="q-c" class="notesBox">-</div>
+          </div>
+        </div>
+        <h2>历史记录(最多记录9条)</h2>
+        <div id="historyNotes" style="font-size: 20px;">0<br>1<br>2<br>3<br>4</div>
+      </div>
     </div>
-    <button type="button" class="ipBotton" onclick="test()">测试</button>
-    <button type="button" class="ipBotton" onclick="generate()">生成</button>
-    <button type="button" class="ipBotton" onclick="resetSeed()">重置</button>
+    <!-- <div> -->
+    <div style="display: none;">
+      <div id="seedWithDay"></div>
+      <button type="button" class="ipBotton" onclick="test()">测试</button>
+      <button type="button" class="ipBotton" onclick="playSound()">播放</button>
+    </div>
   </div>
-</body>  
+</body>
+
 </html>
