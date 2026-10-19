@@ -79,11 +79,13 @@ function songHtml(song) {
     <summary>
       <span class="idx">${String(song.order).padStart(2, "0")}</span>
       <span class="t">${esc(song.title)}</span>
+      ${song.incomplete ? '<span class="tag-warn">待补充 · ' + esc(song.incomplete) + "</span>" : ""}
       <span class="k">${esc(song.key)}</span>
       <span class="a">${esc(song.artist)}</span>
     </summary>
     <div class="body">
       <div class="hint" style="margin-bottom:14px">${meta}${song.note ? " · " + esc(song.note) : ""}</div>
+      ${song.incomplete ? '<div class="warn-line">这首只有主歌，' + esc(song.incomplete) + '，指法谱先按现有段落给出。</div>' : ""}
       ${secs}
     </div>
   </details></li>`;
@@ -98,7 +100,7 @@ function render(data) {
     <div class="legend2">
       <span>${esc(data.instrument.name)}（${esc(data.instrument.tuning)}）</span>
       <span>音域 ${esc(data.instrument.range.join(" – "))}</span>
-      <span>共 ${songs.length} 首（${done.length} 首已转译）· ${total} 音 · 按键 ${slides}</span>
+      <span>共 ${songs.length} 首 · ${total} 音 · 按键 ${slides}</span>
     </div>
     <div class="legend2" style="margin-bottom:18px">
       <span><b style="color:var(--blow)">吹</b> = 呼气</span>

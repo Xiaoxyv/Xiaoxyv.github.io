@@ -142,6 +142,16 @@ button.ghost:hover{color:var(--ink);filter:none}
   font-variant-numeric:tabular-nums}
 .song .a{color:var(--ink-3);font-size:12.5px;margin-left:auto;text-align:right}
 .song[open]>summary{border-bottom:1px solid var(--line);background:var(--surface-2)}
+
+/* 窄屏：标题独占一行，调号与作者落到第二行，避免长曲名逐字换行 */
+@media (max-width:620px){
+  .song>summary{flex-wrap:wrap;gap:8px 10px;align-items:baseline}
+  .song .idx{order:1}
+  .song .t{order:2;flex:1 1 auto;min-width:0}
+  .song .tag-warn{order:3}
+  .song .k{order:4}
+  .song .a{order:5;width:100%;margin:0 0 0 28px;text-align:left;white-space:normal}
+}
 .song .body{padding:20px 18px}
 .secname{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:18px 0 10px}
 .secname:first-child{margin-top:0}
@@ -156,6 +166,27 @@ button.ghost:hover{color:var(--ink);filter:none}
 .legend2{display:flex;flex-wrap:wrap;gap:18px;font-size:12.5px;color:var(--ink-3)}
 .legend2 b{font-weight:600}
 .hint{font-size:12.5px;color:var(--ink-3)}
+
+/* 待补充标记 */
+.tag-warn{font-size:11px;color:#f0b465;border:1px solid #5a4425;background:#2a2013;
+  border-radius:999px;padding:2px 8px;white-space:nowrap;letter-spacing:.02em}
+.warn-line{margin-bottom:14px;font-size:13px;color:#f0b465;border-left:2px solid #7a5a2c;
+  padding:2px 0 2px 10px;background:linear-gradient(90deg,rgba(240,180,101,.06),transparent)}
+
+/* 平台卡片 */
+.plats{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.plat{display:flex;flex-direction:column;gap:14px;padding:22px;border:1px solid var(--line);
+  border-radius:var(--radius);background:var(--surface);transition:.18s}
+.plat:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.plat .top{display:flex;align-items:center;gap:14px}
+.plat .ava{width:46px;height:46px;border-radius:12px;object-fit:cover;border:1px solid var(--line-2);background:var(--bg-2)}
+.plat .ava.ph{display:grid;place-items:center;font-weight:700;font-size:17px;color:var(--accent)}
+.plat .who{font-weight:650;font-size:15.5px;letter-spacing:-.01em}
+.plat .role{font-size:12px;color:var(--ink-3);margin-top:2px}
+.plat .desc{font-size:14px;color:var(--ink-2);line-height:1.65}
+.plat .nums{display:flex;gap:16px;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.plat .nums b{color:var(--ink);font-weight:650}
+.plat .go{margin-top:auto;font-size:12.5px;color:var(--accent);display:flex;align-items:center;gap:6px}
 
 footer{padding:48px 0 72px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
 footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}

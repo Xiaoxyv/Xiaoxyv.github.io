@@ -12,11 +12,13 @@
 
 | 区块 | 内容 |
 |---|---|
-| Hero | 名字、一句话定位、各平台入口 |
-| About | 在做什么、怎么做、业余做什么 |
-| Projects | GitHub 上三个仓库的简介卡片 |
-| Harmonica | 加密的 11 首口琴练习清单 |
+| Hero | 名字、一句话定位、bilibili / 网易云 / 知乎入口 |
+| About | 在做什么、听得最多的东西、剩余时间做什么 |
+| Platforms | bilibili 与网易云的个人信息卡（头像、简介、粉丝/歌单等公开数据） |
+| Harmonica | 加密的口琴练习清单（曲目数由数据决定，当前 7 首） |
 | Contact | 联系方式（GitHub issue） |
+
+> 页面**不展示任何 GitHub 项目**，About 也不基于仓库内容撰写。
 
 ## 目录结构
 
@@ -26,6 +28,9 @@ Xiaoxyv/                        ← 仓库根目录 = 站点根目录
 ├─ 404.html                     # GitHub Pages 的 404 页
 ├─ assets/
 │  ├─ css/main.css              # 全部样式（含深色/浅色适配与打印样式）
+│  ├─ img/
+│  │  ├─ bili.jpg               # bilibili 头像（112×112）
+│  │  └─ netease.jpg            # 网易云头像（112×112）
 │  └─ js/
 │     ├─ main.js                # 平滑滚动、年份
 │     └─ harmonica.js           # 口琴清单：浏览器端解密 + 渲染
@@ -75,8 +80,10 @@ Xiaoxyv/data/harmonica.enc.json     本站读取的密文
 
 顺序由 `Harmonica/data/songs.json` 的 `order` 决定，改顺序只改那个数组。
 
-**曲谱待补**：`Harmonica/data/songs.json` 里的 `pending` 记录还没拿到谱子的曲目，
-构建时不会中断，而是生成一条灰色的「待补」占位——列表位置不变，补齐后重新构建即可替换。
+**曲目取舍**：只在 `order` 里登记**已经有简谱**的曲子；网上确实找不到公开简谱的，
+直接不收录、页面上也不留空位（不留任何「待补」占位）。某首暂时只拿到主歌时，
+在它的 `.jianpu.txt` 头部加一行 `@incomplete: 缺副歌`，页面会显示「待补充 · 缺副歌」的标签，
+但指法谱照常给出。
 
 **打印**：页面解锁后点「打印」，会展开全部曲目并套用打印样式（只打指法谱，不打导航和正文）。
 `Harmonica/out/print/*.html` 是本地用的完整指法谱页，**含明文，不要拷进 `Xiaoxyv/`**——
