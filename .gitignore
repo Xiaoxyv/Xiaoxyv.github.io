@@ -1,0 +1,8 @@
+# 旧站快照只做本地对照，不进仓库、也不部署
+legacy-backup/
+
+# 临时文件
+_unlock-test.html
+*.local
+.DS_Store
+Thumbs.db
